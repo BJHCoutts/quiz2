@@ -4,8 +4,11 @@
     <div class="card-body">
       <h5 class="card-title"><%= idea.title %></h5>
       <p class="card-text"><%= idea.description %></p>
-      <small class="card-subtitle mb-2 text-muted">By User Id #<%= idea.user_id %> and timestamp</small>
-      <a href="<%= idea_path(idea) %>%" class="card-link">View</a>
+
+      <a href="<%= idea_path(idea) %>%" class="card-link">Show</a><br>
+      
+      <small class="card-subtitle mb-2 text-muted">Created by User Id #<%= idea.user_id %> @ <%= time_ago_in_words idea.created_at %> ago</small>
+
 
       <%= link_to "Edit", edit_idea_path(idea), class: "btn btn-primary" %>
 
