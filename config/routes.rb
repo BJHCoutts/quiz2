@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
 resources :ideas
 
+resources :users, only: [:new, :create]
+
+resource :sessions, only: [:new, :destroy, :create]
+
 root to: "ideas#index"
 
 end
