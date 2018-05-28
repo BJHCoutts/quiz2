@@ -2,12 +2,17 @@ class IdeasController < ApplicationController
 
   before_action :find_idea
 
+  def index
+    @ideas = Idea.order(created_at: :desc)
+  end
+  
   def new
     @idea = Idea.new
   end
 
   def create
-    render json: params
+    Idea.create(idea_params)
+    redirect_to ideas_path
   end 
 
   private

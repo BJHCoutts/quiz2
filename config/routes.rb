@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-get '/' => 'welcome#index', as: 'root'
+# get '/' => 'welcome#index', as: 'root'
 
-resources :ideas, only: [:new, :create]
+resources :ideas
+
+root to: "ideas#index"
 
 end
