@@ -5,7 +5,7 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.order(created_at: :desc)
   end
-  
+
   def new
     @idea = Idea.new
   end
@@ -13,7 +13,12 @@ class IdeasController < ApplicationController
   def create
     Idea.create(idea_params)
     redirect_to ideas_path
-  end 
+  end
+
+  def destroy
+    @idea.destroy
+    redirect_to ideas_path
+  end
 
   private
   def find_idea

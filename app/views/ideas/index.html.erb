@@ -1,10 +1,23 @@
 <% @ideas.each do |idea| %>
-  <div class="card" style="width: 18rem;">
+<hr>
+  <div class="card" style="width: 58rem;">
     <div class="card-body">
       <h5 class="card-title"><%= idea.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted">User and timestamp</h6>
       <p class="card-text"><%= idea.description %></p>
+      <small class="card-subtitle mb-2 text-muted">User and timestamp</small>
       <a href="<%= idea_path(idea) %>%" class="card-link">View</a>
+      <button class="btn btn-primary">Edit</button>
+      <%= link_to(
+          'Delete',
+          idea_path(idea),
+          method: :delete,
+          data: {
+            confirm: 'really delete?'
+          },
+          class: "btn btn-danger"
+        )
+      %>
+
     </div>
   </div>
 <% end %>
