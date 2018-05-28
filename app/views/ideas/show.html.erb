@@ -1,0 +1,22 @@
+<h1><%= @idea.title %></h1>
+
+<p><%= @idea.description %></p>
+
+<p><small>Posted <%= time_ago_in_words @idea.created_at %> ago</small></p>
+
+<div class="owner-controls mb-4">
+  <%= link_to "Edit", edit_idea_path(@idea), class: "btn btn-primary" %>
+
+      <%= link_to(
+          'Delete',
+          idea_path(@idea),
+          method: :delete,
+          data: {
+            confirm: 'really delete?'
+          },
+          class: "btn btn-danger"
+        )
+      %>
+</div>
+
+<h4>Reviews</h4>
