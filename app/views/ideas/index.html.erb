@@ -6,7 +6,9 @@
       <p class="card-text"><%= idea.description %></p>
       <small class="card-subtitle mb-2 text-muted">User and timestamp</small>
       <a href="<%= idea_path(idea) %>%" class="card-link">View</a>
-      <button class="btn btn-primary">Edit</button>
+
+      <%= link_to "Edit", edit_idea_path(idea), class: "btn btn-primary" %>
+
       <%= link_to(
           'Delete',
           idea_path(idea),

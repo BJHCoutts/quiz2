@@ -15,6 +15,14 @@ class IdeasController < ApplicationController
     redirect_to ideas_path
   end
 
+  def edit
+  end
+
+  def update
+    @idea.update(idea_params)
+    redirect_to ideas_path(@idea)
+  end
+
   def destroy
     @idea.destroy
     redirect_to ideas_path
