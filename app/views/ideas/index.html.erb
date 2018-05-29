@@ -9,6 +9,7 @@
       
       <small class="card-subtitle mb-2 text-muted">Created by User Id #<%= idea.user_id %> @ <%= time_ago_in_words idea.created_at %> ago</small>
 
+      <% if can?(:manage, idea) %>
 
       <%= link_to "Edit", edit_idea_path(idea), class: "btn btn-primary" %>
 
@@ -22,7 +23,7 @@
           class: "btn btn-danger"
         )
       %>
-
+      <% end %>
     </div>
   </div>
 <% end %>
