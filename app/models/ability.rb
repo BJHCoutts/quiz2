@@ -7,9 +7,9 @@ class Ability
       user == idea.user
     end
 
-    # can(:manage, Reveiw) do |review|
-    #   user == review.user
-    # end
+    can(:manage, Review) do |review|
+      user == review.user
+    end
   
   end
 end

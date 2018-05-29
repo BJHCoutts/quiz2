@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   before_action :authorize_user!, only: [:destroy]
 
   def create
-    @review = Review.new comment_params
+    @review = Review.new review_params
     @review.idea = @idea
     @review.user = current_user
 
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     flash[:success] = "Review deleted"
-    redirect_to @review.idea
+    redirect_to @idea
   end
 
   private
@@ -34,7 +34,8 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:body)
+    params.permit(:body)
+    # params.require(:review).permit(:body)
   end
 
   def authorize_user!

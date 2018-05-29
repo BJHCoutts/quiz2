@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
 # get '/' => 'welcome#index', as: 'root'
 
-resources :ideas
+resources :ideas do
+  resources :reviews
+end
 
 resources :users, only: [:new, :create]
 

@@ -1,5 +1,7 @@
 class Idea < ApplicationRecord
 
-  belongs_to :user
+  has_many :reviews, dependent: :destroy
+
+  belongs_to :user, optional: true
   
 end

@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 2018_05_28_214132) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "body"
+    t.bigint "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.index ["idea_id"], name: "index_reviews_on_idea_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -43,5 +45,6 @@ ActiveRecord::Schema.define(version: 2018_05_28_214132) do
   end
 
   add_foreign_key "ideas", "users"
+  add_foreign_key "reviews", "ideas"
   add_foreign_key "reviews", "users"
 end

@@ -20,3 +20,46 @@
 </div>
 
 <h4>Reviews</h4>
+
+<%= form_for [@idea, @review] do |f| %>
+
+  <div>
+    <%= f.text_area(
+      :body,
+      cols: 60,
+      rows: 6,
+      placeholder: "What is your review of this idea?"
+    ) %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>
+
+<div class="review-list">
+  <% @reviews.each do |review| %>
+    <div>
+      <small>
+        <strong>
+          <%= review.user&.first_name || "[DELETED]"%> wrote:
+        </strong>
+      </small>
+      
+      <p>
+        <%= review.body %> <br />
+        <small>
+          Posted <%= time_ago_in_words(review.created_at) %> ago
+        </small>
+        <br>
+        <% if can?(:delete, review) %>
+        <%= link_to(
+              "Delete",
+              idea_review_path(@idea.id, review.id),
+              method: :delete,
+          data: {
+            confirm: 'really delete?'
+          },
+          class: "btn btn-danger"
+        )
+      %>
+    <% end %>
+    </div>
+  <% end %>
